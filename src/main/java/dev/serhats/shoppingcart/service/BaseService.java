@@ -1,0 +1,38 @@
+package dev.serhats.shoppingcart.service;
+
+import dev.serhats.shoppingcart.exception.EntityNotFoundException;
+import dev.serhats.shoppingcart.model.BaseModel;
+import dev.serhats.shoppingcart.model.repo.BaseRepo;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
+
+public interface BaseService<Entity extends BaseModel, Repo extends BaseRepo<Entity>> {
+    Repo getRepo();
+
+    @Transactional(readOnly = true)
+    default Optional<Entity> findById(long entityId) {
+        return getRepo().findById(entityId);
+    }
+
+    @Transactional(readOnly = true)
+    default Entity getById(long entityId) throws EntityNotFoundException {
+        return getRepo().findById(entityId).orElseThrow(EntityNotFoundException::new);
+    }
+
+    @Transactional
+    default Entity create(Entity entity) {
+        return getRepo().save(entity);
+    }
+
+    @Transactional
+    default void delete(Entity entity) {
+        getRepo().delete(entity);
+    }
+
+    @Transactional
+    default void delete(long entityId) {
+        getRepo().deleteById(entityId);
+    }
+
+}
