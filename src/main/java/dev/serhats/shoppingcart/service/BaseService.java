@@ -32,13 +32,14 @@ public interface BaseService<Entity extends BaseModel, Repo extends BaseRepo<Ent
     }
 
     @Transactional
-    default void delete(Entity entity) {
+    default void delete(Entity entity) throws EntityNotFoundException {
         getRepo().delete(entity);
     }
 
     @Transactional
-    default void delete(long entityId) {
-        getRepo().deleteById(entityId);
+    default void delete(long entityId) throws EntityNotFoundException {
+        Entity entity = getById(entityId);
+        getRepo().delete(entity);
     }
 
 }
