@@ -1,15 +1,15 @@
 package dev.serhats.shoppingcart.model;
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Data
-@Builder
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class Cart extends BaseModel {
     @MapsId

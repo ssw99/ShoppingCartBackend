@@ -3,6 +3,7 @@ package dev.serhats.shoppingcart.model;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -12,7 +13,7 @@ import java.util.List;
 
 @Entity
 @Data
-@Builder
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class Product extends BaseModel {
     @NotBlank(message = "Products must have a name!")

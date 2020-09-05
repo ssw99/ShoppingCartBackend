@@ -40,15 +40,15 @@ public class DefaultCartService implements CartService {
         productService.decreaseAmountByOne(productId);
 
         Optional<CartProduct> cartProductOptional = getCartProduct(cart, productId);
+        CartProduct cartProduct;
         if (cartProductOptional.isPresent()) {
-            cartProductOptional.get().setQuantity(cartProductOptional.get().getQuantity() + 1);
+            cartProduct = cartProductOptional.get();
+            cartProduct.setQuantity(cartProductOptional.get().getQuantity() + 1);
+
         } else {
-            CartProduct cartProduct = CartProduct.builder()
-                    .product(productService.getById(productId))
-                    .cart(cart)
-                    .quantity(1)
-                    .build();
+            cartProduct = new CartProduct(cart, productService.getById(productId));
         }
+        cartProductRepo.save(cartProduct);
     }
 
     @Override

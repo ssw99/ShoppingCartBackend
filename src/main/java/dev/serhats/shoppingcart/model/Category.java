@@ -3,6 +3,7 @@ package dev.serhats.shoppingcart.model;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -11,7 +12,7 @@ import java.util.List;
 
 @Entity
 @Data
-@Builder
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class Category extends BaseModel {
     @NotBlank(message = "Category name can't be null!")
@@ -19,4 +20,8 @@ public class Category extends BaseModel {
 
     @OneToMany(mappedBy = "category")
     private List<Product> products;
+
+    public Category(String name) {
+        this.name = name;
+    }
 }

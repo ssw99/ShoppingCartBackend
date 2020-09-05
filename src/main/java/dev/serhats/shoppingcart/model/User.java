@@ -3,6 +3,7 @@ package dev.serhats.shoppingcart.model;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +12,7 @@ import javax.validation.constraints.*;
 
 @Entity
 @Data
-@Builder
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class User extends BaseModel {
     @NotBlank(message = "User name can't be null!")

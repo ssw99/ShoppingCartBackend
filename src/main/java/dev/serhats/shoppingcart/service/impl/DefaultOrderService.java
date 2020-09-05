@@ -22,15 +22,11 @@ public class DefaultOrderService implements OrderService {
     @Override
     public void order(Cart cart) throws EntityNotFoundException {
         User user = cart.getUser();
-        Order order = Order.builder().user(user).build();
+        Order order = new Order(user);
         save(order);
 
         cart.getProducts().forEach(cartProduct -> {
-            OrderProduct orderProduct = OrderProduct.builder()
-                    .order(order)
-                    .product(cartProduct.getProduct())
-                    .quantity(cartProduct.getQuantity())
-                    .build();
+            OrderProduct orderProduct = new OrderProduct(order, cartProduct);
             orderProductRepo.save(orderProduct);
         });
     }
