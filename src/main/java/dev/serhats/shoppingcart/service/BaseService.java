@@ -21,7 +21,7 @@ public interface BaseService<Entity extends BaseModel, Repo extends BaseRepo<Ent
     }
 
     @Transactional
-    default Entity create(Entity entity) {
+    default Entity save(Entity entity) {
         return getRepo().save(entity);
     }
 
