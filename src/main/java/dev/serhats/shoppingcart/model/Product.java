@@ -37,11 +37,11 @@ public class Product extends BaseModel {
     /**
      * Orders this product is in it
      */
-    @ManyToMany(mappedBy = "products")
-    private List<Order> orders;
+    @OneToMany(mappedBy = "product")
+    private List<OrderProduct> orders;
     /**
      * Carts this product is in it
      */
-    @ManyToMany(mappedBy = "products")
-    private List<Cart> carts;
+    @OneToMany(mappedBy = "product")
+    private List<CartProduct> carts;
 }

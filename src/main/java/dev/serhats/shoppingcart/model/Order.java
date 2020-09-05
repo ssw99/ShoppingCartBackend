@@ -16,9 +16,6 @@ public class Order extends BaseModel {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToMany
-    @JoinTable(name = "order_products",
-            joinColumns = @JoinColumn(name = "order_id", nullable = false),
-            inverseJoinColumns = @JoinColumn(name = "product_id", nullable = false))
-    private List<Product> products;
+    @OneToMany(mappedBy = "order")
+    private List<OrderProduct> products;
 }

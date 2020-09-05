@@ -16,9 +16,6 @@ public class Cart extends BaseModel {
     @OneToOne
     private User user;
 
-    @ManyToMany
-    @JoinTable(name = "cart_products",
-            joinColumns = @JoinColumn(name = "cart_id", nullable = false),
-            inverseJoinColumns = @JoinColumn(name = "product_id", nullable = false))
-    private List<Product> products;
+    @OneToMany(mappedBy = "cart")
+    private List<CartProduct> products;
 }
