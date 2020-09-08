@@ -1,6 +1,5 @@
 package dev.serhats.shoppingcart.model;
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -45,4 +44,11 @@ public class Product extends BaseModel {
      */
     @OneToMany(mappedBy = "product")
     private List<CartProduct> carts;
+
+    public Product(String name, double price, int amount, Category category) {
+        this.name = name;
+        this.price = price;
+        this.amount = amount;
+        this.category = category;
+    }
 }
