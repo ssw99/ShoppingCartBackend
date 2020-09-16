@@ -28,8 +28,8 @@ public class CategoryController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public CategoryResponse create(@RequestBody CategoryRequest categoryRequest,
-                                      HttpServletRequest request,
-                                      HttpServletResponse response) {
+                                   HttpServletRequest request,
+                                   HttpServletResponse response) {
         Category category = new Category(categoryRequest.getName());
         category = categoryService.save(category);
         response.setHeader("Location", request.getRequestURL() + "" + category.getId());

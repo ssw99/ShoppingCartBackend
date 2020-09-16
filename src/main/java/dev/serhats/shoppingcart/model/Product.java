@@ -25,7 +25,7 @@ public class Product extends BaseModel {
     private double price;
 
     @NotNull(message = "Amount of the product can't be null!")
-    @Min(value = 0,  message = "Price is not valid!")
+    @Min(value = 0, message = "Price is not valid!")
     @Column(nullable = false)
     private int amount;
 

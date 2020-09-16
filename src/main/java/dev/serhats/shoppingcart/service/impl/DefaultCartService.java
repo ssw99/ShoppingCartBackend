@@ -62,7 +62,7 @@ public class DefaultCartService implements CartService {
         getCartProduct(cart, productId).ifPresent(cartProduct -> {
             if (cartProduct.getQuantity() > 1) {
                 cartProduct.setQuantity(cartProduct.getQuantity() - 1);
-            }else {
+            } else {
                 cartProductRepo.delete(cartProduct);
             }
         });
@@ -93,7 +93,7 @@ public class DefaultCartService implements CartService {
 
     private Optional<CartProduct> getCartProduct(Cart cart, long productId) {
         return cart.getProducts().stream().filter(cartProduct ->
-            cartProduct.getProduct().getId() == productId
+                cartProduct.getProduct().getId() == productId
         ).findFirst();
     }
 }

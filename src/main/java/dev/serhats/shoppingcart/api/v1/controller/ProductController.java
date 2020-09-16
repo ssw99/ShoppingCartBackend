@@ -31,8 +31,8 @@ public class ProductController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ProductResponse create(@RequestBody ProductRequest productRequest,
-                                   HttpServletRequest request,
-                                   HttpServletResponse response) {
+                                  HttpServletRequest request,
+                                  HttpServletResponse response) {
         Category category = categoryService.getById(productRequest.getCategoryId());
         Product product = productService.save(new Product(
                 productRequest.getName(),

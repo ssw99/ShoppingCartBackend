@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 public interface OrderService extends BaseService<Order, OrderRepo> {
     @Transactional
     void order(Cart cart) throws EntityNotFoundException;
+
     @Transactional
     void order(long cartId) throws EntityNotFoundException;
 }
